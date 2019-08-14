@@ -15,7 +15,7 @@ def selects_the_titles_of_all_projects_and_their_pledge_amounts_alphabetized_by_
   FROM pledges
   JOIN projects ON projects.id = pledges.project_id
   GROUP BY projects.id 
-  ORDER BY projects.title"
+  ORDER BY projects.title;"
 end
 
 def selects_the_user_name_age_and_pledge_amount_for_all_pledges_alphabetized_by_name
@@ -23,7 +23,7 @@ def selects_the_user_name_age_and_pledge_amount_for_all_pledges_alphabetized_by_
   FROM pledges
   JOIN users ON users.id = pledges.user_id
   GROUP BY users.id
-  ORDER BY users.name"
+  ORDER BY users.name;"
 end
 
 def selects_the_titles_and_amount_over_goal_of_all_projects_that_have_met_their_funding_goal
@@ -52,7 +52,11 @@ end
 
 
 def selects_the_category_name_and_the_sum_total_of_the_all_its_pledges_for_the_books_category
-  
+    "SELECT projects.category, SUM(pledges.amount)
+    FROM projects
+    JOIN pledges ON projects.id = pledges.project_id
+    WHERE projects.category = 'books'
+    GROUP BY projects.category;"
 end
 
 
